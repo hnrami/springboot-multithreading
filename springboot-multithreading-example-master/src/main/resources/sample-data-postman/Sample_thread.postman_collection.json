@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "ca8f519b-f15c-4497-944f-c9e2916a60f4",
+		"name": "Sample_thread",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "139487"
+	},
+	"item": [
+		{
+			"name": "localhost:9191/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/5.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/4.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9191/users",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/1.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/2.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9191/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "schools",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/com_School.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/com_School.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9191/schools",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"schools"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "students",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/4.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/3.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9191/students",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comapanys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/com_School.csv"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/heman/Downloads/com_School.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9191/comapanys",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"comapanys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsersByThread",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9191/getUsersByThread",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"getUsersByThread"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getallrecordsByThread",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9191/getallrecordsByThread",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"getallrecordsByThread"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
