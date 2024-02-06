@@ -1,1 +1,136 @@
-sampel
+const axios = require('axios');
+
+async function executeSearch() {
+  try {
+    const query = {
+      query: {
+        bool: {
+          must: [
+            {
+              constant_score: {
+                filter: {
+                  terms: {
+                    recorddeleteddtim: [
+                      "NULL"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              bool: {
+                should: [
+                  {
+                    constant_score: {
+                      filter: {
+                        match_phrase_prefix: {
+                          "recordsource.text": {
+                            query: "usa",
+                            slop: 0,
+                            max_expansions: 75,
+                            zero_terms_query: "NONE"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    constant_score: {
+                      filter: {
+                        match: {
+                          "recordsource.text": {
+                            query: "usa",
+                            operator: "OR",
+                            prefix_length: 0,
+                            max_expansions: 75,
+                            fuzzy_transpositions: true,
+                            lenient: false,
+                            zero_terms_query: "NONE",
+                            auto_generate_synonyms_phrase_query: true
+                          }
+                        }
+                      },
+                      boost: 10.0
+                    }
+                  },
+                  {
+                    constant_score: {
+                      filter: {
+                        prefix: {
+                          "recordsource.text": {
+                            value: "usa"
+                          }
+                        }
+                      },
+                      boost: 5.0
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      _source: false,
+      aggregations: {
+        recordsource: {
+          terms: {
+            script: {
+              source: "if(doc recordsource'].size() != 0) return doc.recordsource.value;",
+              lang: "painless"
+            },
+            size: 3,
+            min_doc_count: 1,
+            shard_min_doc_count: 0,
+            show_term_doc_count_error: false,
+            order: [
+              {
+                max_score: "desc"
+              },
+              {
+                _count: "desc"
+              },
+              {
+                _key: "asc"
+              },
+              {
+                _key: "asc"
+              }
+            ]
+          },
+          aggregations: {
+            max_score: {
+              max: {
+                script: {
+                  source: "_score",
+                  lang: "painless"
+                }
+              }
+            },
+            commonfields: {
+              top_hits: {
+                from: 0,
+                size: 3,
+                version: false,
+                _source: {
+                  includes: [
+                    "recordsource",
+                    "recordgeopolitical"
+                  ],
+                  excludes: []
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+
+    const response = await axios.post('http://your_opensearch_host:9200/your_index_name/_search', query);
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error executing search:', error);
+  }
+}
+
+executeSearch();
