@@ -5,7 +5,8 @@
         {
           "multi_match": {
             "query": "well",
-            "fields": ["country", "city"]
+            "fields": ["country", "city"],
+            "fuzziness": "AUTO"
           }
         },
         {
